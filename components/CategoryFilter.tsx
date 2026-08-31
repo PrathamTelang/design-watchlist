@@ -20,7 +20,7 @@ export default function CategoryFilter({
 }: Props) {
   return (
   <>
-    <div className="mb-4 flex gap-6 text-xs text-[#8E8E8E]">
+    <div className="mb-2 flex gap-6 text-xs text-[#8E8E8E]">
       <span>
         {totalVideos} Videos
       </span>

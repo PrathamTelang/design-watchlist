@@ -3,6 +3,7 @@ import { getYoutubeMetadata } from "@/lib/youtube"
 import { notFound } from "next/navigation"
 import Link from "next/link";
 import { IoLogoYoutube } from "react-icons/io";
+import Header from "@/components/Header";
 
 type Props = {
   params: Promise<{
@@ -34,8 +35,10 @@ export default async function VideoPage({
 );
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-[#09090B] text-white">
       <div className="mx-auto max-w-4xl px-6 pt-12 pb-20">
+
+        <Header/>
 
         <img
           src={metadata.thumbnail_url}

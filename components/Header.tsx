@@ -3,6 +3,7 @@
 import { videos } from "@/data/videos";
 import { useState } from "react";
 import SubmitResourceModal from "./SubmitResourceModal";
+import Link from "next/link";
 
 export default function Header() {
 
@@ -10,9 +11,13 @@ export default function Header() {
   useState(false);
 
   return (
-    <header className="mb-2">
+    <header className="mb-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-serif italic">Design Watchlist</h1>
+        <Link href="/">
+  <h1 className="text-2xl font-serif italic cursor-pointer">
+    Design Watchlist
+  </h1>
+</Link>
 
         <button
   onClick={() =>
