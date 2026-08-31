@@ -154,37 +154,57 @@ export default async function VideoPage({
     Related Videos
   </h2>
 
-  <div className="space-y-4">
-    {relatedVideos.map((related) => (
+ <div className="grid gap-6 md:grid-cols-2">
+  {relatedVideos.map((related) => {
+    const videoId =
+      new URL(related.url)
+        .searchParams.get("v");
+
+    const thumbnail =
+      `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+
+    return (
       <Link
         key={related.id}
         href={`/video/${related.id}`}
         className="
-          block
-          rounded-xl
+          overflow-hidden
+          rounded-2xl
           border
           border-zinc-800
-          p-4
           transition
-
           hover:border-zinc-600
         "
       >
-        <p className="text-sm text-zinc-500">
-          {related.category}
-        </p>
+        <img
+          src={thumbnail}
+          alt={related.id}
+          className="
+            aspect-video
+            w-full
+            object-cover
+          "
+        />
 
-        <h3 className="mt-1">
-          {related.id
-            .replaceAll("-", " ")
-            .replace(
-              /\b\w/g,
-              (char) => char.toUpperCase()
-            )}
-        </h3>
+        <div className="p-4">
+          <p className="text-sm text-zinc-500">
+            {related.category}
+          </p>
+
+          <h3 className="mt-2">
+            {related.id
+              .replaceAll("-", " ")
+              .replace(
+                /\b\w/g,
+                (char) =>
+                  char.toUpperCase()
+              )}
+          </h3>
+        </div>
       </Link>
-    ))}
-  </div>
+    );
+  })}
+</div>
 </section>
 
         
