@@ -2,6 +2,7 @@ import { videos } from "@/data/videos"
 import { getYoutubeMetadata } from "@/lib/youtube"
 import { notFound } from "next/navigation"
 import Link from "next/link";
+import { IoLogoYoutube } from "react-icons/io";
 
 type Props = {
   params: Promise<{
@@ -61,12 +62,13 @@ export default async function VideoPage({
             {metadata.author_name}
           </p>
 
+          <div className="flex items-center gap-2 mt-6">
+            <IoLogoYoutube className="text-red-500" />
           <a
           href={video.url}
           target="_blank"
           rel="noreferrer"
           className="
-          mt-2
           inline-flex
           uppercase
           text-sm
@@ -76,6 +78,7 @@ export default async function VideoPage({
         >
           Watch on YouTube →
         </a>
+          </div>
 
         </div>
 
