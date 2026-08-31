@@ -9,12 +9,16 @@ export default async function VideoGrid() {
         await getYoutubeMetadata(video.url)
 
       return {
-        url: video.url,
-        title: metadata.title,
-        author: metadata.author_name,
-        thumbnail:
-          metadata.thumbnail_url,
-      }
+  ...video,
+
+  id: video.id,
+
+  title: metadata.title,
+
+  author: metadata.author_name,
+
+  thumbnail: metadata.thumbnail_url,
+}
     })
   )
 
@@ -30,10 +34,7 @@ export default async function VideoGrid() {
       {resources.map((video) => (
         <VideoCard
           key={video.url}
-          title={video.title}
-          author={video.author}
-          thumbnail={video.thumbnail}
-          url={video.url}
+          video={video}
         />
       ))}
     </div>
