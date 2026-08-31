@@ -1,17 +1,28 @@
-export default function SearchBar() {
+"use client";
+
+type SearchBarProps = {
+  value: string;
+  onChange: (value: string) => void;
+};
+
+export default function SearchBar({
+  value,
+  onChange,
+}: SearchBarProps) {
   return (
     <input
-      placeholder="Search"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      placeholder="Search videos..."
       className="
-      w-full
-      border-b
-      border-zinc-800
-      bg-transparent
-      py-4
-      text-sm
-      outline-none
-      placeholder:text-zinc-600
+        w-full
+        border-b
+        border-zinc-800
+        bg-transparent
+        py-4
+        outline-none
+        placeholder:text-zinc-600
       "
     />
-  )
+  );
 }

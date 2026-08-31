@@ -11,8 +11,6 @@ export default function Home() {
 
         <div className="space-y-8">
 
-          <SearchBar />
-
           <VideoGrid />
 
         </div>

@@ -1,6 +1,6 @@
 import { videos } from "@/data/videos"
 import { getYoutubeMetadata } from "@/lib/youtube"
-import VideoCard from "./VideoCard"
+import VideoLibrary from "./VideoLibrary"
 
 export default async function VideoGrid() {
   const resources = await Promise.all(
@@ -9,34 +9,21 @@ export default async function VideoGrid() {
         await getYoutubeMetadata(video.url)
 
       return {
-  ...video,
+        ...video,
 
-  id: video.id,
+        id: video.id,
 
-  title: metadata.title,
+        title: metadata.title,
 
-  author: metadata.author_name,
+        author: metadata.author_name,
 
-  thumbnail: metadata.thumbnail_url,
-}
+        thumbnail:
+          metadata.thumbnail_url,
+      }
     })
   )
 
   return (
-    <div
-      className="
-      grid
-      gap-6
-      md:grid-cols-2
-      lg:grid-cols-3
-      "
-    >
-      {resources.map((video) => (
-        <VideoCard
-          key={video.url}
-          video={video}
-        />
-      ))}
-    </div>
+    <VideoLibrary videos={resources} />
   )
 }
