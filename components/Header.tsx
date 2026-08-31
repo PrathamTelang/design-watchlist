@@ -1,6 +1,13 @@
+"use client";
+
 import { videos } from "@/data/videos";
+import { useState } from "react";
+import SubmitResourceModal from "./SubmitResourceModal";
 
 export default function Header() {
+
+  const [open, setOpen] =
+  useState(false);
 
   const categories = new Set(
   videos.map((video) => video.category)
@@ -14,15 +21,12 @@ export default function Header() {
         </h1>
 
         <button
-          className="
-          text-sm
-          text-zinc-500
-          hover:text-white
-          transition
-          "
-        >
-          Submit resource
-        </button>
+  onClick={() =>
+    setOpen(true)
+  }
+>
+  Submit resource
+</button>
       </div>
 
       <p
@@ -47,6 +51,15 @@ export default function Header() {
     {categories.size} Categories
   </span>
 </div>
+
+<SubmitResourceModal
+  open={open}
+  onClose={() =>
+    setOpen(false)
+  }
+/>
+
+
     </header>
   )
 }
