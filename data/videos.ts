@@ -272,6 +272,153 @@ export const videos = [
   speaker: "Karl Koch",
 
   watchLevel: "Must Watch",
-}
+},
 
+{
+  id: "thom-bettridge-source-material",
+
+  url: "https://www.youtube.com/watch?v=B8Q89_yoJAY",
+
+  category: "Design Inspiration",
+
+  tags: [
+    "Editorial Design",
+    "Design Inspiration",
+    "Creative References",
+    "Magazine Design",
+    "Art Direction",
+    "Visual Culture",
+    "Figma",
+    "Publishing",
+    "Typography",
+    "Creative Research",
+  ],
+
+  whyWatch:
+    "A rare look into the references and influences behind one of the most respected voices in contemporary editorial design. Thom Bettridge shares the magazines, books, and cultural artifacts that shaped his creative perspective, offering a masterclass in how great designers build taste through exposure to exceptional work.",
+
+  takeaways: [
+    "Great designers develop taste by studying influential work across disciplines, not just within their own field",
+    "Editorial design is as much about storytelling and cultural context as it is about layout and typography",
+    "Building a personal library of references can dramatically improve creative decision-making",
+  ],
+
+  difficulty: "Beginner",
+
+  speaker: "Thom Bettridge",
+
+  watchLevel: "Worth Watching",
+},
+
+{
+  id: "high-level-design-thinking",
+
+  url: "https://www.youtube.com/watch?v=VzQl1Tl_LPM",
+
+  category: "Design Thinking",
+
+  tags: [
+    "Design Thinking",
+    "Psychology",
+    "Visual Communication",
+    "Branding",
+    "Creative Thinking",
+    "Design Strategy",
+    "Visual Hierarchy",
+    "User Perception",
+    "Graphic Design",
+    "Professional Mindset",
+  ],
+
+  whyWatch:
+    "A comprehensive introduction to the mental models that separate professional designers from those focused only on visual aesthetics. This video explores how great designers think about psychology, perception, communication, emotion, and audience behavior before making visual decisions.",
+
+  takeaways: [
+    "Successful design is fundamentally about communication, not decoration",
+    "Understanding human psychology and perception leads to more effective design decisions",
+    "Professional designers focus on strategy, audience needs, and emotional impact before aesthetics",
+  ],
+
+  difficulty: "Beginner",
+
+  speaker: "Tom Cargill",
+
+  watchLevel: "Must Watch",
+
+  featured: true,
+},
+
+{
+  id: "art-of-design-controls-the-world",
+
+  url: "https://www.youtube.com/watch?v=DVsgpTNB5CI",
+
+  category: "Design Thinking",
+
+  tags: [
+    "Design Thinking",
+    "Systems Design",
+    "Engineering",
+    "Psychology",
+    "Human Behavior",
+    "Problem Solving",
+    "Innovation",
+    "Civilization",
+    "Architecture",
+    "Technology",
+  ],
+
+  whyWatch:
+    "A powerful exploration of design as a universal problem-solving discipline rather than a visual craft. Using examples from engineering, infrastructure, psychology, technology, and civilization itself, this video explains how design shapes the systems that shape human behavior.",
+
+  takeaways: [
+    "Design is the process of transforming constraints into functional systems, not simply making things look good",
+    "Scalable systems emerge through abstraction, standardization, and thoughtful organization of complexity",
+    "The environments and systems we design eventually influence how people think, behave, and make decisions",
+  ],
+
+  difficulty: "Beginner",
+
+  speaker: "XenoSphere Originals",
+
+  watchLevel: "Must Watch",
+
+  featured: true,
+},
+
+{
+  id: "figma-file-organization",
+
+  url: "https://www.youtube.com/watch?v=jNin5jI65Gg",
+
+  category: "Design Systems",
+
+  tags: [
+    "Figma",
+    "Design Systems",
+    "Design Ops",
+    "Workflow",
+    "File Organization",
+    "Collaboration",
+    "Design Teams",
+    "Documentation",
+    "Handoff",
+    "Product Design",
+  ],
+
+  whyWatch:
+    "A practical breakdown of how senior designers at companies like Figma, Slack, Webflow, Plaid, Mozilla, Hex, and Lattice structure their Figma files. Instead of teaching theory, this video reveals real workflows used by professional design teams to stay organized and collaborate effectively.",
+
+  takeaways: [
+    "There is no single perfect file structure, but consistency matters more than the exact system",
+    "Sections, templates, archives, and naming conventions dramatically improve team collaboration",
+    "Well-organized Figma files reduce handoff friction and make design systems easier to scale",
+  ],
+
+  difficulty: "Beginner",
+
+  speaker: "Jay Neil",
+
+  watchLevel: "Worth Watching",
+}
 ];
