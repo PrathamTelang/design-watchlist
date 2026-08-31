@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import SearchBar from "./SearchBar";
 import VideoCard from "./VideoCard";
+import CategoryFilter from "./CategoryFilter";
 
 type Props = {
   videos: any[];
@@ -13,20 +14,50 @@ export default function VideoLibrary({
 }: Props) {
   const [search, setSearch] = useState("");
 
-  const filteredVideos = useMemo(() => {
-    return videos.filter((video) => {
-      const query = search.toLowerCase();
+  const [activeCategory, setActiveCategory] =
+  useState("All");
 
-      return (
-        video.title.toLowerCase().includes(query) ||
-        video.author.toLowerCase().includes(query) ||
-        video.category.toLowerCase().includes(query)
-      );
-    });
-  }, [search, videos]);
+  const categories = [
+  "All",
+  ...new Set(
+    videos.map((video) => video.category)
+  ),
+];
+
+  const filteredVideos = useMemo(() => {
+  return videos.filter((video) => {
+    const matchesSearch =
+      video.title
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      video.author
+        .toLowerCase()
+        .includes(search.toLowerCase());
+
+    const matchesCategory =
+      activeCategory === "All" ||
+      video.category === activeCategory;
+
+    return (
+      matchesSearch &&
+      matchesCategory
+    );
+  });
+}, [
+  search,
+  activeCategory,
+  videos,
+]);
 
   return (
     <>
+    <CategoryFilter
+  categories={categories}
+  activeCategory={activeCategory}
+  onCategoryChange={
+    setActiveCategory
+  }
+/>
       <SearchBar
         value={search}
         onChange={setSearch}

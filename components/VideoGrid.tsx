@@ -1,17 +1,19 @@
-import { videos } from "@/data/videos"
-import { getYoutubeMetadata } from "@/lib/youtube"
-import VideoLibrary from "./VideoLibrary"
+import { videos } from "@/data/videos";
+import { getYoutubeMetadata } from "@/lib/youtube";
+import VideoLibrary from "./VideoLibrary";
 
 export default async function VideoGrid() {
   const resources = await Promise.all(
     videos.map(async (video) => {
       const metadata =
-        await getYoutubeMetadata(video.url)
+        await getYoutubeMetadata(video.url);
+
+      if (!metadata) {
+        return null;
+      }
 
       return {
         ...video,
-
-        id: video.id,
 
         title: metadata.title,
 
@@ -19,11 +21,16 @@ export default async function VideoGrid() {
 
         thumbnail:
           metadata.thumbnail_url,
-      }
+      };
     })
-  )
+  );
+
+  const validResources =
+    resources.filter(Boolean);
 
   return (
-    <VideoLibrary videos={resources} />
-  )
+    <VideoLibrary
+      videos={validResources}
+    />
+  );
 }

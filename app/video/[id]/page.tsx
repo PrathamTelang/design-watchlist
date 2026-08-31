@@ -54,6 +54,25 @@ export default async function VideoPage({
             {metadata.author_name}
           </p>
 
+          <a
+          href={video.url}
+          target="_blank"
+          rel="noreferrer"
+          className="
+          mt-4
+          inline-flex
+          rounded-full
+          border
+          border-zinc-800
+          px-6
+          py-3
+
+          hover:border-zinc-600
+          "
+        >
+          Watch on YouTube →
+        </a>
+
         </div>
 
         <section className="mt-16">
@@ -123,24 +142,7 @@ export default async function VideoPage({
 
         </section>
 
-        <a
-          href={video.url}
-          target="_blank"
-          rel="noreferrer"
-          className="
-          mt-16
-          inline-flex
-          rounded-full
-          border
-          border-zinc-800
-          px-6
-          py-3
-
-          hover:border-zinc-600
-          "
-        >
-          Watch on YouTube →
-        </a>
+        
 
       </div>
     </main>
