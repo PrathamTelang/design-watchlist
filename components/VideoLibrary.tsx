@@ -86,15 +86,14 @@ export default function VideoLibrary({
   return (
     <>
       <CategoryFilter
-        categories={categories}
-        counts={counts}
-        activeCategory={
-          activeCategory
-        }
-        onCategoryChange={
-          setActiveCategory
-        }
-      />
+  categories={categories}
+  counts={counts}
+  activeCategory={activeCategory}
+  onCategoryChange={
+    setActiveCategory
+  }
+  totalVideos={videos.length}
+/>
 
       <SearchBar
         value={search}

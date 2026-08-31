@@ -9,10 +9,6 @@ export default function Header() {
   const [open, setOpen] =
   useState(false);
 
-  const categories = new Set(
-  videos.map((video) => video.category)
-);
-
   return (
     <header className="mb-2">
       <div className="flex items-center justify-between">
@@ -41,15 +37,6 @@ export default function Header() {
         talks, documentaries, podcasts,
         and interviews worth watching.
       </p>
-      <div className="mt-8 flex gap-6 text-xs text-[#8E8E8E]">
-  <span>
-    {videos.length} Videos
-  </span>
-
-  <span>
-    {categories.size} Categories
-  </span>
-</div>
 
 <SubmitResourceModal
   open={open}

@@ -4,7 +4,11 @@ type Props = {
   categories: string[];
   counts: Record<string, number>;
   activeCategory: string;
-  onCategoryChange: (category: string) => void;
+  onCategoryChange: (
+    category: string
+  ) => void;
+
+  totalVideos: number;
 };
 
 export default function CategoryFilter({
@@ -12,8 +16,20 @@ export default function CategoryFilter({
   counts,
   activeCategory,
   onCategoryChange,
+  totalVideos,
 }: Props) {
   return (
+  <>
+    <div className="mb-4 flex gap-6 text-xs text-[#8E8E8E]">
+      <span>
+        {totalVideos} Videos
+      </span>
+
+      <span>
+        {categories.length - 1} Categories
+      </span>
+    </div>
+
     <div className="mb-6 flex flex-wrap gap-2">
       {categories.map((category) => (
         <button
@@ -43,5 +59,6 @@ export default function CategoryFilter({
         </button>
       ))}
     </div>
-  );
+  </>
+);
 }
