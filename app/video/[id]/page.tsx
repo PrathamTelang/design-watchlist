@@ -1,6 +1,7 @@
 import { videos } from "@/data/videos"
 import { getYoutubeMetadata } from "@/lib/youtube"
 import { notFound } from "next/navigation"
+import Link from "next/link";
 
 type Props = {
   params: Promise<{
@@ -24,6 +25,12 @@ export default async function VideoPage({
   const metadata = await getYoutubeMetadata(
     video.url
   )
+  
+  const relatedVideos = videos.filter(
+  (item) =>
+    item.id !== video.id &&
+    item.category === video.category
+);
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -141,6 +148,44 @@ export default async function VideoPage({
           </ul>
 
         </section>
+
+        <section className="mt-20">
+  <h2 className="text-xl mb-6">
+    Related Videos
+  </h2>
+
+  <div className="space-y-4">
+    {relatedVideos.map((related) => (
+      <Link
+        key={related.id}
+        href={`/video/${related.id}`}
+        className="
+          block
+          rounded-xl
+          border
+          border-zinc-800
+          p-4
+          transition
+
+          hover:border-zinc-600
+        "
+      >
+        <p className="text-sm text-zinc-500">
+          {related.category}
+        </p>
+
+        <h3 className="mt-1">
+          {related.id
+            .replaceAll("-", " ")
+            .replace(
+              /\b\w/g,
+              (char) => char.toUpperCase()
+            )}
+        </h3>
+      </Link>
+    ))}
+  </div>
+</section>
 
         
 

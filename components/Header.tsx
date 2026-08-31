@@ -1,4 +1,11 @@
+import { videos } from "@/data/videos";
+
 export default function Header() {
+
+  const categories = new Set(
+  videos.map((video) => video.category)
+);
+
   return (
     <header className="mb-14">
       <div className="flex items-center justify-between">
@@ -31,6 +38,15 @@ export default function Header() {
         talks, documentaries, podcasts,
         and interviews worth watching.
       </p>
+      <div className="mt-4 flex gap-6 text-sm text-zinc-500">
+  <span>
+    {videos.length} Videos
+  </span>
+
+  <span>
+    {categories.size} Categories
+  </span>
+</div>
     </header>
   )
 }
