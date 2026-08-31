@@ -1,13 +1,8 @@
-import { Resource } from "@/types/resource"
-
-export const resources: Resource[] = [
+export const resources = [
   {
-    id: "creative-confidence",
-
+    slug: "creative-confidence",
     title: "Creative Confidence",
-
     creator: "David Kelley",
-
     thumbnail:
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
 
@@ -15,7 +10,7 @@ export const resources: Resource[] = [
 
     type: "Talk",
 
-    category: "Product Design",
+    category: ["Product Design"],
 
     whyWatch:
       "The foundational mindset behind design thinking.",
@@ -26,24 +21,24 @@ export const resources: Resource[] = [
       "Everyone can learn creativity",
     ],
 
-    url: "#",
+    url: "https://youtube.com",
   },
 
   {
-    id: "helvetica",
+    slug: "helvetica",
 
     title: "Helvetica",
 
     creator: "Gary Hustwit",
 
     thumbnail:
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
 
     duration: "80 min",
 
     type: "Documentary",
 
-    category: "Typography",
+    category: ["Typography"],
 
     whyWatch:
       "The most influential typography documentary ever made.",
@@ -51,9 +46,9 @@ export const resources: Resource[] = [
     takeaways: [
       "Typography shapes perception",
       "Design influences culture",
-      "The story of Helvetica",
+      "History of Helvetica",
     ],
 
-    url: "#",
+    url: "https://youtube.com",
   },
 ]
