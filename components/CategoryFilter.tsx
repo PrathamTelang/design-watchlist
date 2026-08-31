@@ -2,12 +2,14 @@
 
 type Props = {
   categories: string[];
+  counts: Record<string, number>;
   activeCategory: string;
   onCategoryChange: (category: string) => void;
 };
 
 export default function CategoryFilter({
   categories,
+  counts,
   activeCategory,
   onCategoryChange,
 }: Props) {
@@ -34,7 +36,9 @@ export default function CategoryFilter({
             }
           `}
         >
-          {category}
+          {category} (
+          {counts[category] ?? 0}
+          )
         </button>
       ))}
     </div>

@@ -15,49 +15,87 @@ export default function VideoLibrary({
   const [search, setSearch] = useState("");
 
   const [activeCategory, setActiveCategory] =
-  useState("All");
+    useState("All");
 
   const categories = [
-  "All",
-  ...new Set(
-    videos.map((video) => video.category)
-  ),
-];
+    "All",
+    ...new Set(
+      videos.map(
+        (video) => video.category
+      )
+    ),
+  ];
+
+  const counts: Record<
+    string,
+    number
+  > = {
+    All: videos.length,
+  };
+
+  videos.forEach((video) => {
+    counts[video.category] =
+      (counts[video.category] || 0) + 1;
+  });
 
   const filteredVideos = useMemo(() => {
-  return videos.filter((video) => {
-    const matchesSearch =
-      video.title
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      video.author
-        .toLowerCase()
-        .includes(search.toLowerCase());
+    return videos.filter((video) => {
+      const query =
+        search.toLowerCase();
 
-    const matchesCategory =
-      activeCategory === "All" ||
-      video.category === activeCategory;
+      const matchesSearch =
+        video.title
+          .toLowerCase()
+          .includes(query) ||
 
-    return (
-      matchesSearch &&
-      matchesCategory
-    );
-  });
-}, [
-  search,
-  activeCategory,
-  videos,
-]);
+        video.author
+          .toLowerCase()
+          .includes(query) ||
+
+        video.category
+          .toLowerCase()
+          .includes(query) ||
+
+        video.whyWatch
+          .toLowerCase()
+          .includes(query) ||
+
+        video.tags.some(
+          (tag: string) =>
+            tag
+              .toLowerCase()
+              .includes(query)
+        );
+
+      const matchesCategory =
+        activeCategory === "All" ||
+        video.category ===
+          activeCategory;
+
+      return (
+        matchesSearch &&
+        matchesCategory
+      );
+    });
+  }, [
+    search,
+    activeCategory,
+    videos,
+  ]);
 
   return (
     <>
-    <CategoryFilter
-  categories={categories}
-  activeCategory={activeCategory}
-  onCategoryChange={
-    setActiveCategory
-  }
-/>
+      <CategoryFilter
+        categories={categories}
+        counts={counts}
+        activeCategory={
+          activeCategory
+        }
+        onCategoryChange={
+          setActiveCategory
+        }
+      />
+
       <SearchBar
         value={search}
         onChange={setSearch}
@@ -72,12 +110,14 @@ export default function VideoLibrary({
         lg:grid-cols-3
         "
       >
-        {filteredVideos.map((video) => (
-          <VideoCard
-            key={video.id}
-            video={video}
-          />
-        ))}
+        {filteredVideos.map(
+          (video) => (
+            <VideoCard
+              key={video.id}
+              video={video}
+            />
+          )
+        )}
       </div>
     </>
   );

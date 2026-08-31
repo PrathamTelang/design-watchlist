@@ -8,11 +8,7 @@ export default function Home() {
 
         <Header />
 
-        <div className="space-y-8">
-
-          <VideoGrid />
-
-        </div>
+<VideoGrid />
 
       </div>
     </main>
