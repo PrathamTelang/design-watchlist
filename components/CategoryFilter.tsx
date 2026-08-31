@@ -14,7 +14,7 @@ export default function CategoryFilter({
   onCategoryChange,
 }: Props) {
   return (
-    <div className="mb-8 flex flex-wrap gap-2">
+    <div className="mb-6 flex flex-wrap gap-2">
       {categories.map((category) => (
         <button
           key={category}
@@ -32,8 +32,8 @@ export default function CategoryFilter({
 
             ${
               activeCategory === category
-                ? "border-white text-white"
-                : "border-zinc-800 text-zinc-500 hover:text-white"
+                ? "border-gray-600 text-gray-200"
+                : "border-zinc-800 text-[#8E8E8E] hover:text-white"
             }
           `}
         >

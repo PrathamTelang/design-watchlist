@@ -50,7 +50,7 @@ export default async function VideoPage({
 
         <div className="mt-4">
 
-          <p className="text-sm text-zinc-500">
+          <p className="text-sm text-[#8E8E8E]">
             {video.category}
           </p>
 
@@ -186,7 +186,7 @@ export default async function VideoPage({
         />
 
         <div className="p-2">
-          <p className="text-sm text-zinc-500">
+          <p className="text-sm text-[#8E8E8E]">
             {related.category}
           </p>
 

@@ -60,7 +60,7 @@ export default function VideoCard({
             className="
             mb-1
             text-xs
-            text-zinc-500
+            text-[#8E8E8E]
             uppercase
             "
           >
@@ -71,7 +71,7 @@ export default function VideoCard({
             {video.title}
           </h3>
 
-          <p className="mt-1 text-sm text-zinc-500">
+          <p className="mt-1 text-sm text-[#8E8E8E]">
             {video.author}
           </p>
 

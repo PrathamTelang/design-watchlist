@@ -69,14 +69,14 @@ export default function SubmitResourceModal({
               Submit a resource
             </h2>
 
-            <p className="mt-1 text-sm text-zinc-500">
+            <p className="mt-1 text-sm text-[#8E8E8E]">
               Recommend a useful resource for the community.
             </p>
           </div>
 
           <button
             onClick={onClose}
-            className="text-zinc-500 transition hover:text-zinc-300 cursor-pointer"
+            className="text-[#8E8E8E] transition hover:text-zinc-300 cursor-pointer"
           >
             Close
           </button>
@@ -106,7 +106,7 @@ export default function SubmitResourceModal({
                 px-3
                 py-2
                 text-white
-                placeholder:text-zinc-500
+                placeholder:text-[#8E8E8E]
                 placeholder:text-sm
                 focus:border-none
                 focus:outline-none
@@ -115,7 +115,7 @@ export default function SubmitResourceModal({
           </div>
 
           {loading && (
-            <p className="text-sm text-zinc-500">
+            <p className="text-sm text-[#8E8E8E]">
               Loading preview...
             </p>
           )}
@@ -133,7 +133,7 @@ export default function SubmitResourceModal({
                   {preview.title}
                 </h3>
 
-                <p className="mt-1 text-sm text-zinc-500">
+                <p className="mt-1 text-sm text-[#8E8E8E]">
                   {preview.author_name}
                 </p>
               </div>
@@ -159,7 +159,7 @@ export default function SubmitResourceModal({
                 px-3
                 py-2
                 text-white
-                placeholder:text-zinc-500
+                placeholder:text-[#8E8E8E]
                 placeholder:text-sm
                 focus:border-none
                 focus:outline-none
@@ -186,7 +186,7 @@ export default function SubmitResourceModal({
                 px-3
                 py-2
                 text-white
-                placeholder:text-zinc-500
+                placeholder:text-[#8E8E8E]
                 placeholder:text-sm
                 focus:border-none
                 focus:outline-none
@@ -210,7 +210,7 @@ export default function SubmitResourceModal({
                 px-3
                 py-2
                 text-white
-                placeholder:text-zinc-500
+                placeholder:text-[#8E8E8E]
                 placeholder:text-sm
                 focus:border-none
                 focus:outline-none

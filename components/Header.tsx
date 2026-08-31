@@ -14,11 +14,9 @@ export default function Header() {
 );
 
   return (
-    <header className="mb-14">
+    <header className="mb-2">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl">
-          Design Watchlist
-        </h1>
+        <h1 className="text-2xl font-serif italic">Design Watchlist</h1>
 
         <button
   onClick={() =>
@@ -32,18 +30,18 @@ export default function Header() {
 
       <p
         className="
-        mt-8
+        mt-2
         max-w-xl
         text-sm
         leading-7
-        text-zinc-500
+        text-[#8E8E8E]
         "
       >
         A curated collection of videos,
         talks, documentaries, podcasts,
         and interviews worth watching.
       </p>
-      <div className="mt-4 flex gap-6 text-sm text-zinc-500">
+      <div className="mt-8 flex gap-6 text-xs text-[#8E8E8E]">
   <span>
     {videos.length} Videos
   </span>

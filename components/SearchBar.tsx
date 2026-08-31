@@ -20,7 +20,7 @@ export default function SearchBar({
         border-b
         border-zinc-800
         bg-transparent
-        py-4
+        py-2
         outline-none
         placeholder:text-zinc-600
       "
