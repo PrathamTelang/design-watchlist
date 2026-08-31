@@ -12,57 +12,41 @@ export default function SubmitResourceModal({
   onClose,
 }: Props) {
   const [url, setUrl] = useState("");
-  const [category, setCategory] =
-    useState("");
+  const [category, setCategory] = useState("");
   const [tags, setTags] = useState("");
 
-  const [preview, setPreview] =
-  useState<any>(null);
+  const [preview, setPreview] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
 
-const [loading, setLoading] =
-  useState(false);
+  async function loadPreview(url: string) {
+    if (!url.includes("youtube")) {
+      setPreview(null);
+      return;
+    }
 
-  async function loadPreview(
-  url: string
-) {
-  if (!url.includes("youtube")) {
-    return;
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/youtube", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ url }),
+      });
+
+      const data = await response.json();
+      setPreview(data);
+    } catch {
+      setPreview(null);
+    }
+
+    setLoading(false);
   }
-
-  setLoading(true);
-
-  try {
-    const response =
-      await fetch(
-        "/api/youtube",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type":
-              "application/json",
-          },
-          body: JSON.stringify({
-            url,
-          }),
-        }
-      );
-
-    const data =
-      await response.json();
-
-    setPreview(data);
-  } catch {
-    setPreview(null);
-  }
-
-  setLoading(false);
-}
 
   if (!open) return null;
 
-  function handleSubmit(
-    e: React.FormEvent
-  ) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
     console.log({
@@ -71,158 +55,181 @@ const [loading, setLoading] =
       tags,
     });
 
-    alert(
-      "Resource submitted!"
-    );
-
+    alert("Resource submitted!");
     onClose();
   }
 
   return (
-    <div
-      className="
-      fixed
-      inset-0
-      z-50
-      flex
-      items-center
-      justify-center
-      bg-black/80
-      "
-    >
-      <div
-        className="
-        w-full
-        max-w-xl
-        rounded-3xl
-        border
-        border-zinc-800
-        bg-black
-        p-8
-        "
-      >
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl">
-            Submit Resource
-          </h2>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+      <div className="w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-950 p-8">
+        {/* Header */}
+        <div className="flex items-start justify-between">
+          <div>
+            <h2 className="text-lg font-semibold text-white">
+              Submit a resource
+            </h2>
+
+            <p className="mt-1 text-sm text-zinc-500">
+              Recommend a useful resource for the community.
+            </p>
+          </div>
 
           <button
             onClick={onClose}
+            className="text-zinc-500 transition hover:text-zinc-300 cursor-pointer"
           >
-            ✕
+            Close
           </button>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className="mt-8 space-y-4"
+          className="mt-8 space-y-6"
         >
-          <input
-  value={url}
-  className="
-              w-full
-              rounded-xl
-              border
-              border-zinc-800
-              bg-transparent
-              px-4
-              py-3
-            "
-  onChange={(e) => {
-    setUrl(e.target.value);
+          {/* Link */}
+          <div>
+            <label className="mb-2 block text-sm text-zinc-300">
+              Link
+            </label>
 
-    loadPreview(
-      e.target.value
-    );
-  }}
-  placeholder="YouTube URL"
-/>
+            <input
+              value={url}
+              onChange={(e) => {
+                setUrl(e.target.value);
+                loadPreview(e.target.value);
+              }}
+              placeholder="https://..."
+              className="
+                w-full
+                rounded-lg
+                bg-zinc-900
+                px-3
+                py-2
+                text-white
+                placeholder:text-zinc-500
+                placeholder:text-sm
+                focus:border-none
+                focus:outline-none
+              "
+            />
+          </div>
 
-{loading && (
-  <p className="text-zinc-500">
-    Loading preview...
-  </p>
-)}
+          {loading && (
+            <p className="text-sm text-zinc-500">
+              Loading preview...
+            </p>
+          )}
 
-{preview && (
-  <div
-    className="
-      overflow-hidden
-      rounded-xl
-      border
-      border-zinc-800
-    "
-  >
-    <img
-      src={
-        preview.thumbnail_url
-      }
-      alt={preview.title}
-      className="
-        w-full
-      "
-    />
+          {preview && (
+            <div className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900">
+              <img
+                src={preview.thumbnail_url}
+                alt={preview.title}
+                className="w-full"
+              />
 
-    <div className="p-4">
-      <h3>
-        {preview.title}
-      </h3>
+              <div className="p-4">
+                <h3 className="font-medium text-white">
+                  {preview.title}
+                </h3>
 
-      <p className="text-zinc-500">
-        {
-          preview.author_name
-        }
-      </p>
-    </div>
-  </div>
-)}
+                <p className="mt-1 text-sm text-zinc-500">
+                  {preview.author_name}
+                </p>
+              </div>
+            </div>
+          )}
 
-          <input
-            value={category}
-            onChange={(e) =>
-              setCategory(
-                e.target.value
-              )
-            }
-            placeholder="Category"
-            className="
-              w-full
-              rounded-xl
-              border
-              border-zinc-800
-              bg-transparent
-              px-4
-              py-3
-            "
-          />
+          {/* Category */}
+          <div>
+            <label className="mb-2 block text-sm text-zinc-300">
+              Category
+            </label>
 
-          <input
-            value={tags}
-            onChange={(e) =>
-              setTags(
-                e.target.value
-              )
-            }
-            placeholder="Tags (comma separated)"
-            className="
-              w-full
-              rounded-xl
-              border
-              border-zinc-800
-              bg-transparent
-              px-4
-              py-3
-            "
-          />
+            <input
+              value={category}
+              onChange={(e) =>
+                setCategory(e.target.value)
+              }
+              placeholder="Product Design, Typography, Motion..."
+              className="
+                w-full
+                rounded-lg
+                bg-zinc-900
+                px-3
+                py-2
+                text-white
+                placeholder:text-zinc-500
+                placeholder:text-sm
+                focus:border-none
+                focus:outline-none
+              "
+            />
+          </div>
+
+          {/* Tags */}
+          <div>
+            <label className="mb-2 block text-sm text-zinc-300">
+              Tags
+            </label>
+
+            <input
+              value={tags}
+              onChange={(e) =>
+                setTags(e.target.value)
+              }
+              placeholder="Design Thinking, UX, Interaction"
+              className="
+                w-full
+                rounded-lg
+                bg-zinc-900
+                px-3
+                py-2
+                text-white
+                placeholder:text-zinc-500
+                placeholder:text-sm
+                focus:border-none
+                focus:outline-none
+              "
+            />
+          </div>
+
+          {/* Notes */}
+          <div>
+            <label className="mb-2 block text-sm text-zinc-300">
+              Why should it be included?
+            </label>
+
+            <textarea
+              rows={6}
+              placeholder="Tell us why this resource is valuable..."
+              className="
+                w-full
+                rounded-lg
+                bg-zinc-900
+                px-3
+                py-2
+                text-white
+                placeholder:text-zinc-500
+                placeholder:text-sm
+                focus:border-none
+                focus:outline-none
+              "
+            />
+          </div>
 
           <button
             type="submit"
             className="
               w-full
-              rounded-xl
+              rounded-lg
               bg-white
-              py-3
+              py-2
+              cursor-pointer
+              font-medium
               text-black
+              transition
+              hover:bg-zinc-200
             "
           >
             Submit

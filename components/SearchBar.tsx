@@ -15,6 +15,7 @@ export default function SearchBar({
       onChange={(e) => onChange(e.target.value)}
       placeholder="Search videos..."
       className="
+        text-sm
         w-full
         border-b
         border-zinc-800

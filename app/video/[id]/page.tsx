@@ -34,30 +34,30 @@ export default async function VideoPage({
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <div className="mx-auto max-w-4xl px-6 py-20">
+      <div className="mx-auto max-w-4xl px-6 pt-12 pb-20">
 
         <img
           src={metadata.thumbnail_url}
           alt={metadata.title}
           className="
           aspect-video
-          w-full
-          rounded-2xl
+          w-1/2
+          rounded-md
           object-cover
           "
         />
 
-        <div className="mt-10">
+        <div className="mt-4">
 
           <p className="text-sm text-zinc-500">
             {video.category}
           </p>
 
-          <h1 className="mt-3 text-5xl font-light">
+          <h1 className="mt-3 text-xl font-semibold">
             {metadata.title}
           </h1>
 
-          <p className="mt-4 text-zinc-400">
+          <p className="mt-2 text-zinc-400">
             {metadata.author_name}
           </p>
 
@@ -66,15 +66,12 @@ export default async function VideoPage({
           target="_blank"
           rel="noreferrer"
           className="
-          mt-4
+          mt-2
           inline-flex
-          rounded-full
-          border
-          border-zinc-800
-          px-6
-          py-3
-
-          hover:border-zinc-600
+          uppercase
+          text-sm
+          hover:underline
+          underline-offset-4
           "
         >
           Watch on YouTube →
@@ -82,15 +79,14 @@ export default async function VideoPage({
 
         </div>
 
-        <section className="mt-16">
+        <section className="mt-6">
 
-          <h2 className="text-xl">
+          <h2 className="text-lg">
             Why Watch
           </h2>
 
           <p
             className="
-            mt-4
             max-w-2xl
             text-zinc-400
             leading-8
@@ -101,18 +97,18 @@ export default async function VideoPage({
 
         </section>
 
-        <section className="mt-16">
+        <section className="mt-6">
 
-          <h2 className="text-xl">
+          <h2 className="text-lg">
             Tags
           </h2>
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-2 flex flex-wrap gap-2">
             {video.tags.map((tag) => (
               <span
                 key={tag}
                 className="
-                rounded-full
+                rounded-md
                 border
                 border-zinc-800
                 px-3
@@ -128,13 +124,13 @@ export default async function VideoPage({
 
         </section>
 
-        <section className="mt-16">
+        <section className="mt-6">
 
           <h2 className="text-xl">
             Key Takeaways
           </h2>
 
-          <ul className="mt-6 space-y-4">
+          <ul className="mt-2 space-y-1">
             {video.takeaways.map(
               (takeaway) => (
                 <li
@@ -149,8 +145,8 @@ export default async function VideoPage({
 
         </section>
 
-        <section className="mt-20">
-  <h2 className="text-xl mb-6">
+        <section className="mt-10">
+  <h2 className="text-xl mb-4">
     Related Videos
   </h2>
 
@@ -169,11 +165,11 @@ export default async function VideoPage({
         href={`/video/${related.id}`}
         className="
           overflow-hidden
-          rounded-2xl
+          rounded-md
           border
           border-zinc-800
           transition
-          hover:border-zinc-600
+          hover:bg-zinc-900
         "
       >
         <img
@@ -186,12 +182,12 @@ export default async function VideoPage({
           "
         />
 
-        <div className="p-4">
+        <div className="p-2">
           <p className="text-sm text-zinc-500">
             {related.category}
           </p>
 
-          <h3 className="mt-2">
+          <h3 className="mt-0">
             {related.id
               .replaceAll("-", " ")
               .replace(
