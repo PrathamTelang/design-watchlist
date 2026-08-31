@@ -30,15 +30,14 @@ export default function VideoCard({
       <article
         className="
         overflow-hidden
-        rounded-2xl
+        rounded-sm
         border
         border-zinc-900
 
         transition-all
         duration-300
 
-        hover:-translate-y-1
-        hover:border-zinc-700
+        hover:bg-zinc-900
         "
       >
         <img
@@ -52,15 +51,14 @@ export default function VideoCard({
           transition-transform
           duration-500
 
-          group-hover:scale-105
           "
         />
 
-        <div className="p-4">
+        <div className="p-2">
 
           <div
             className="
-            mb-3
+            mb-1
             text-xs
             text-zinc-500
             uppercase

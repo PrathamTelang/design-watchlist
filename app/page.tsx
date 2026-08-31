@@ -3,7 +3,7 @@ import VideoGrid from "@/components/VideoGrid"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-[#09090B] text-white">
       <div className="mx-auto max-w-7xl px-6 py-12">
 
         <Header />

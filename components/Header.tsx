@@ -24,6 +24,7 @@ export default function Header() {
   onClick={() =>
     setOpen(true)
   }
+  className="hover:underline underline-offset-4 cursor-pointer"
 >
   Submit resource
 </button>

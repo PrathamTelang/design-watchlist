@@ -22,11 +22,12 @@ export default function CategoryFilter({
             onCategoryChange(category)
           }
           className={`
-            rounded-full
+            rounded-md
+            cursor-pointer
             border
             px-4
             py-2
-            text-sm
+            text-xs
             transition
 
             ${
